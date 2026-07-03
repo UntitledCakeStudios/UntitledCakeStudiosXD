@@ -2,8 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- 🟢 PWA ADDITION START -->
+  <link rel="manifest" href="data:application/manifest+json,{
+    &quot;name&quot;:&quot;Untitled Cake Studios&quot;,
+    &quot;short_name&quot;:&quot;CakeStudio&quot;,
+    &quot;start_url&quot;:&quot;./index.html&quot;,
+    &quot;display&quot;:&quot;standalone&quot;,
+    &quot;background_color&quot;:&quot;#ffffff&quot;,
+    &quot;theme_color&quot;:&quot;#FCD6A5&quot;,
+    &quot;icons&quot;:[{
+      &quot;src&quot;:&quot;https://i.postimg.cc/jdkyC9TH/1782268052701-2.jpg&quot;,
+      &quot;sizes&quot;:&quot;192x192&quot;,
+      &quot;type&quot;:&quot;image/png&quot;
+    },{
+      &quot;src&quot;:&quot;https://i.postimg.cc/jdkyC9TH/1782268052701-2.jpg&quot;,
+      &quot;sizes&quot;:&quot;512x512&quot;,
+      &quot;type&quot;:&quot;image/png&quot;
+    }]
+  }">
+  <meta name="theme-color" content="#FCD6A5">
+  <!-- 🟢 PWA ADDITION END -->
+
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
     :root {
       --text-brown: #5A3825;
@@ -56,6 +79,7 @@
     .footer-board { background: var(--ui-orange); border: 5px solid var(--text-brown); border-radius: 20px; padding: 20px; max-width: 600px; margin: 40px auto; text-align: center; font-size: 0.9rem; }
   </style>
 </head>
+
 <body>
 
   <div class="branding">
@@ -73,6 +97,7 @@
   </div>
 
   <div class="main-window">
+
     <div id="career" class="pane active">
       <div class="pane-flex">
         <div class="content-area">
@@ -80,22 +105,22 @@
           <p>My journey in software development is defined by a deep-rooted passion for browser-based architecture. Rather than relying on massive game engines, I specialize in building custom, high-performance web frameworks from the ground up using core JavaScript, CSS, and HTML5. By hosting directly on GitHub, I ensure that my projects are not only accessible globally but also serve as open-source blueprints for others who want to learn how web games are structured.</p>
           <p>Every line of code I write is optimized to run smoothly on any device, ensuring that the barrier to entry for the end-user remains nonexistent. My workflow is lean, efficient, and entirely focused on the raw power of the web.</p>
         </div>
-        <img src="https://img.icons8.com/ios11/512/FFFFFF/github.png" alt="GitHub Logo" class="github-icon">
+        <img src="https://img.icons8.com/ios11/512/FFFFFF/github.png" class="github-icon">
       </div>
     </div>
-    
+
     <div id="about" class="pane">
       <h2>About the Developer</h2>
       <p>Hey! I'm Finn, the creator behind <strong>Untitled Cake Studio</strong>. My development focus has evolved; I am no longer working on Roblox projects and have transitioned fully into the world of GitHub-based game development. I am passionate about building browser-native experiences that run directly on GitHub Pages. I specialize in crafting custom, high-performance web frameworks from scratch, prioritizing lightweight code over bloated engines.</p>
       <p>My goal is to create instant-play, open-source projects that serve as blueprints for the future of web gaming. Whether I'm building complex, responsive UI interfaces or experimenting with new browser-native physics, I love pushing the boundaries of what's possible with just HTML, CSS, and JavaScript. When I'm not coding, I'm usually refining my workflow or collaborating with my friends—Malaki, Dilan, Miley, and Riley—to bring new, streamlined, and creative ideas to life.</p>
     </div>
-    
+
     <div id="history" class="pane">
       <h2>Our History</h2>
       <p>UntitledC🎂keStudios was born from the realization that modern gaming was becoming too bloated. We started our history in a small local workspace, experimenting with how minimal code could produce maximum interaction. We quickly realized that the GitHub ecosystem was the perfect laboratory for our work—it allowed us to push updates instantly, track our iteration process, and invite the community to peek under the hood of our development cycles.</p>
       <p>Over the years, we have transitioned from creating basic logic puzzles to building sophisticated interactive engines. We have survived numerous framework shifts and browser updates, always keeping our core mission intact: creating games that are fast, fun, and entirely browser-native.</p>
     </div>
-    
+
     <div id="portfolio" class="pane">
       <h2>Portfolio Showcase</h2>
       <p>Our portfolio is a collection of technical achievements that highlight our growth as a studio. We don't just build games; we build the systems that power them.</p>
@@ -130,6 +155,7 @@
         <input type="checkbox" onchange="document.body.classList.toggle('dark-mode', this.checked)">
       </div>
     </div>
+
   </div>
 
   <div class="footer-board">
@@ -144,6 +170,23 @@
       evt.currentTarget.classList.add('active');
     }
   </script>
+
+  <!-- 🟢 PWA SERVICE WORKER -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      const swCode = `
+        self.addEventListener("fetch", event => {
+          event.respondWith(fetch(event.request));
+        });
+      `;
+
+      const blob = new Blob([swCode], { type: "application/javascript" });
+      const swURL = URL.createObjectURL(blob);
+
+      navigator.serviceWorker.register(swURL);
+    }
+  </script>
+
 </body>
-      </html>
-  
+                                                                  </html>
+                                                                  
